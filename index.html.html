@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nauman Ali | Network & Cybersecurity Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d1f3c;
+  --navy2: #132848;
+  --blue: #1e5fa8;
+  --accent: #2e8fff;
+  --accent2: #5eaeff;
+  --light: #e8f0fb;
+  --text: #d0dff5;
+  --muted: #7a9cc4;
+  --white: #ffffff;
+  --card: #0f2240;
+  --border: rgba(46,143,255,0.18);
+  --glow: 0 0 30px rgba(46,143,255,0.12);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6vw;
+  background: rgba(13,31,60,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 6vw 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(30,95,168,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(46,143,255,0.08) 0%, transparent 60%);
+}
+/* grid lines */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,143,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,143,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.hero-tag {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -1px;
+  color: var(--white);
+  text-transform: uppercase;
+  animation: fadeUp 0.7s ease 0.1s both;
+}
+.hero-name .accent { color: var(--accent); }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 12px;
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text);
+  max-width: 520px;
+  margin-top: 24px;
+  line-height: 1.75;
+  font-weight: 300;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 40px;
+  animation: fadeUp 0.7s ease 0.4s both;
+}
+.stat-item {}
+.stat-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.hero-cta {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s ease 0.5s both;
+}
+.btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  display: inline-block;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--navy);
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,143,255,0.35); }
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.btn-outline:hover { background: rgba(46,143,255,0.1); transform: translateY(-2px); }
+
+/* ── SECTIONS ── */
+section {
+  padding: 90px 6vw;
+  position: relative;
+  z-index: 1;
+}
+section:nth-child(even) { background: var(--navy2); }
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 48px;
+}
+.section-title span { color: var(--accent); }
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.about-text p {
+  font-size: 1.02rem;
+  color: var(--text);
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+.about-text p strong { color: var(--white); font-weight: 600; }
+.about-contact { margin-top: 28px; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+.contact-item .ci-label { color: var(--accent); font-weight: 600; min-width: 80px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; }
+.about-highlights {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px;
+  box-shadow: var(--glow);
+}
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.highlight-item:last-child { border-bottom: none; }
+.hi-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 60px;
+}
+.hi-text { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+.hi-text strong { color: var(--white); display: block; font-size: 0.95rem; margin-bottom: 2px; }
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 22px 24px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(46,143,255,0.15);
+  border-color: var(--accent);
+}
+.skill-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.skill-tag {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(46,143,255,0.08);
+  border: 1px solid rgba(46,143,255,0.15);
+  padding: 4px 10px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+/* ── EXPERIENCE ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 6px; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.exp-item {
+  position: relative;
+  margin-bottom: 44px;
+}
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.exp-header { margin-bottom: 10px; }
+.exp-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.exp-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+.exp-company {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 3px;
+  font-weight: 400;
+}
+.exp-company strong { color: var(--text); }
+.exp-bullets {
+  list-style: none;
+  margin-top: 14px;
+}
+.exp-bullets li {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 300;
+  padding: 5px 0 5px 18px;
+  position: relative;
+  line-height: 1.6;
+}
+.exp-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px;
+  width: 6px; height: 1px;
+  background: var(--accent);
+}
+.exp-bullets li strong { color: var(--white); font-weight: 600; }
+
+/* ── PROJECTS ── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+}
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 26px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+.project-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(46,143,255,0.18); border-color: var(--accent); }
+.project-card:hover::before { transform: scaleX(1); }
+.project-year {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.project-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.project-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.project-result {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(46,143,255,0.1);
+  border: 1px solid rgba(46,143,255,0.2);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+/* ── SERVICES ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+.service-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.service-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--glow); }
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  display: block;
+}
+.service-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.service-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.contact-section p {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 36px;
+  line-height: 1.75;
+}
+.contact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 24px;
+  text-align: left;
+  min-width: 200px;
+}
+.cc-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.cc-value {
+  font-size: 0.92rem;
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px;
+  border-top: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+footer span { color: var(--accent); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 14px 5vw; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 0.75rem; }
+  .hero { padding: 100px 5vw 60px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  section { padding: 64px 5vw; }
+}
+@media (max-width: 500px) {
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nauman <span>Ali</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Network and Cybersecurity Engineer</div>
+    <h1 class="hero-name">Nauman<br><span class="accent">Ali</span></h1>
+    <div class="hero-title">12 Years Building and Securing IT Infrastructure</div>
+    <p class="hero-desc">
+      I build, secure, and manage enterprise and government IT infrastructure.
+      From data center setup to firewall hardening, IPsec VPN, and endpoint
+      security, I take full ownership of the environment and keep it running.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">12+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Sites Commissioned</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Uptime Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Breaches Post Go-Live</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn btn-outline">View Experience</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <div class="section-title">About <span>Me</span></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I am a Network and Cybersecurity Engineer based in Islamabad, Pakistan,
+        with over <strong>12 years of hands-on experience</strong> across government,
+        enterprise, telecom, and industrial environments.
+      </p>
+      <p>
+        My current work involves running a <strong>national government data center</strong>
+        for the Pakistan Bureau of Statistics, where I manage everything from Cisco
+        switching and Fortinet firewall policies to VMware virtualization and SolarWinds
+        monitoring. I do not just configure systems, I own the full environment and
+        the outcomes that come with it.
+      </p>
+      <p>
+        Before that, I worked on a <strong>national telecom rollout</strong> covering
+        100+ sites across Pakistan, commissioning Ericsson 2G/3G/4G LTE networks and
+        microwave transmission links for major mobile operators.
+      </p>
+      <p>
+        I work well independently, communicate clearly with non-technical stakeholders,
+        and produce documentation that government authorities have formally accepted.
+      </p>
+      <div class="about-contact">
+        <div class="contact-item"><span class="ci-label">Location</span> PWD, Islamabad, Pakistan</div>
+        <div class="contact-item"><span class="ci-label">Phone</span> +92 333 4152326</div>
+        <div class="contact-item"><span class="ci-label">Email</span> nomankharal@gmail.com</div>
+        <div class="contact-item"><span class="ci-label">Available</span> Immediately</div>
+      </div>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-item">
+        <div class="hi-number">99.9%</div>
+        <div class="hi-text"><strong>Government Data Center Uptime</strong>Maintained since deployment for Pakistan Bureau of Statistics national systems</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-number">0</div>
+        <div class="hi-text"><strong>Security Breaches After Go-Live</strong>100% of unauthorized access blocked within 30 days of firewall deployment</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-number">0</div>
+        <div class="hi-text"><strong>Downtime During Migration</strong>Full data center relocation completed with no service interruption</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-number">3</div>
+        <div class="hi-text"><strong>Critical Threats Resolved in Q1</strong>Identified and fixed through Sangfor ETP endpoint monitoring</div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-number">100+</div>
+        <div class="hi-text"><strong>Telecom Sites Commissioned</strong>BTS swap and 4G LTE integration for national mobile operators</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I Know</div>
+  <div class="section-title">Skills and <span>Expertise</span></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Networking and Infrastructure</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LAN / WAN Design</span>
+        <span class="skill-tag">VLAN Configuration</span>
+        <span class="skill-tag">Routing and Switching</span>
+        <span class="skill-tag">Cisco 2960 / 3750 / 3850</span>
+        <span class="skill-tag">Dell S5248F</span>
+        <span class="skill-tag">Lenovo G8052</span>
+        <span class="skill-tag">Data Center Rack and Stack</span>
+        <span class="skill-tag">High Availability</span>
+        <span class="skill-tag">Disaster Recovery</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Firewall and Network Security</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Fortinet FortiGate 201F</span>
+        <span class="skill-tag">Sangfor NSF3100 AI</span>
+        <span class="skill-tag">Firewall Policy Setup</span>
+        <span class="skill-tag">NAT Configuration</span>
+        <span class="skill-tag">Reverse Proxy</span>
+        <span class="skill-tag">Sangfor IAG M5200</span>
+        <span class="skill-tag">Internet Access Control</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">VPN and Remote Access</div>
+      <div class="skill-tags">
+        <span class="skill-tag">IPsec Site-to-Site VPN</span>
+        <span class="skill-tag">Remote Access VPN</span>
+        <span class="skill-tag">Secure Web Publishing</span>
+        <span class="skill-tag">Multi-site Connectivity</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Cybersecurity</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Sangfor ETP</span>
+        <span class="skill-tag">Endpoint Threat Protection</span>
+        <span class="skill-tag">Vulnerability Assessment</span>
+        <span class="skill-tag">Penetration Testing (CEH)</span>
+        <span class="skill-tag">Security Hardening</span>
+        <span class="skill-tag">Security Report Writing</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Virtualization and Servers</div>
+      <div class="skill-tags">
+        <span class="skill-tag">VMware ESXi</span>
+        <span class="skill-tag">Sangfor HCI</span>
+        <span class="skill-tag">VM Lifecycle Management</span>
+        <span class="skill-tag">Dell PowerEdge R760</span>
+        <span class="skill-tag">Lenovo System x3650</span>
+        <span class="skill-tag">Windows Server Datacenter</span>
+        <span class="skill-tag">Active Directory</span>
+        <span class="skill-tag">DHCP</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Monitoring and Documentation</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SolarWinds NPM</span>
+        <span class="skill-tag">NOC Wall Setup</span>
+        <span class="skill-tag">Dahua Monitoring</span>
+        <span class="skill-tag">HLD Documentation</span>
+        <span class="skill-tag">Network Diagrams</span>
+        <span class="skill-tag">Technical Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Physical Security</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Hikvision CCTV</span>
+        <span class="skill-tag">Dahua CCTV</span>
+        <span class="skill-tag">Biometric Access Control</span>
+        <span class="skill-tag">ZKT Systems</span>
+        <span class="skill-tag">Suprema / Biostar</span>
+        <span class="skill-tag">Access Policy Management</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-card-title">Wireless and Telecom</div>
+      <div class="skill-tags">
+        <span class="skill-tag">TP-Link Omada Controller</span>
+        <span class="skill-tag">Enterprise Wi-Fi Setup</span>
+        <span class="skill-tag">SSID and VLAN Design</span>
+        <span class="skill-tag">2G / 3G / 4G LTE RAN</span>
+        <span class="skill-tag">Ericsson RBS 6000</span>
+        <span class="skill-tag">Microwave Transmission</span>
+        <span class="skill-tag">Mini Link Craft</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I Have Worked</div>
+  <div class="section-title">Work <span>Experience</span></div>
+  <div class="timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-date">2024 – Present</div>
+        <div class="exp-title">Resident Engineer – Data Center Operations</div>
+        <div class="exp-company"><strong>CDIGITAL Pvt Ltd</strong> &nbsp;|&nbsp; Client: Pakistan Bureau of Statistics, Islamabad</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Built and deployed a national government data center achieving <strong>99.9% uptime</strong> across all critical systems</li>
+        <li>Deployed Fortinet FortiGate 201F and Sangfor NSF3100 AI firewalls, blocking all unauthorized access within 30 days</li>
+        <li>Configured IPsec VPNs across <strong>5+ inter-agency sites</strong> with zero reported breaches</li>
+        <li>Completed a full data center migration with <strong>zero downtime</strong></li>
+        <li>Found and resolved <strong>3 critical security threats</strong> in Q1 using Sangfor ETP</li>
+        <li>Rolled out VMware ESXi and Sangfor HCI, cutting hardware by an estimated 40%</li>
+        <li>Set up SolarWinds monitoring, reducing fault detection time by ~50%</li>
+        <li>Produced HLD documentation and security reports accepted by government authorities</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-date">Jun 2013 – Jun 2017</div>
+        <div class="exp-title">BSS Transmission Engineer</div>
+        <div class="exp-company"><strong>Ammar Engineering Solutions Pvt Ltd</strong> &nbsp;|&nbsp; Karachi, Pakistan</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Commissioned <strong>100+ telecom sites</strong> during a national BTS swap from ALU to Ericsson RBS 6000</li>
+        <li>Integrated 2G, 3G, and 4G LTE RAN using Ericsson NMS for national mobile operators</li>
+        <li>Configured microwave transmission links with <strong>99%+ availability</strong></li>
+        <li>Completed all site acceptance tests within SLA with 100% documentation on time</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-date">Feb 2012 – Jun 2013</div>
+        <div class="exp-title">Electronics and Network Engineer</div>
+        <div class="exp-company"><strong>Al Raheem Textile Industries</strong> &nbsp;|&nbsp; Karachi, Pakistan</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Managed core and access network for a large manufacturing facility at <strong>100% uptime</strong></li>
+        <li>Handled electronics troubleshooting and repairs to keep production lines running</li>
+      </ul>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-header">
+        <div class="exp-date">Mar 2010 – Dec 2011</div>
+        <div class="exp-title">IT and Operations Support Assistant</div>
+        <div class="exp-company"><strong>Strive Trust</strong> &nbsp;|&nbsp; Islamabad, Pakistan</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Provided IT and LAN support to internal teams with same-day resolution</li>
+        <li>Acted as main internal IT contact, reducing calls to external vendors for routine issues</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">What I Have Built</div>
+  <div class="section-title">Key <span>Projects</span></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-year">2024 – Present | Islamabad</div>
+      <div class="project-title">Government Data Center – Full Build and Operations</div>
+      <div class="project-desc">Full deployment of a national-level government data center from bare infrastructure to live operations for Pakistan Bureau of Statistics. Covered multi-vendor security, HLD documentation, virtualization, NOC wall, biometric access control, and SolarWinds monitoring.</div>
+      <span class="project-result">99.9% Uptime | Zero Breaches</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">2024 | Fortinet + Sangfor</div>
+      <div class="project-title">Firewall Hardening and IPsec VPN Setup</div>
+      <div class="project-desc">Built and enforced a full firewall security policy covering NAT, reverse proxy, internet access control, and IPsec site-to-site and remote-access VPNs across 5+ government sites.</div>
+      <span class="project-result">5+ Sites Secured | 0 Breaches</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">2024 | Live Government Environment</div>
+      <div class="project-title">Zero Downtime Data Center Migration</div>
+      <div class="project-desc">Planned and carried out a complete physical relocation of a live government data center, covering dismantling, transport, full rebuilding, and service restoration with no interruption to national systems.</div>
+      <span class="project-result">Zero Service Interruption</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">2013 – 2017 | National Rollout</div>
+      <div class="project-title">Telecom Network Rollout – 100+ Sites</div>
+      <div class="project-desc">Led BTS swap and commissioning from ALU to Ericsson RBS 6000 across 100+ sites for national mobile operators. Integrated 2G/3G/4G LTE RAN and set up microwave backhaul with 99%+ link availability.</div>
+      <span class="project-result">100+ Sites | 99%+ Link Availability</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">2024 | Sangfor ETP + CEH</div>
+      <div class="project-title">Endpoint Security and Threat Detection</div>
+      <div class="project-desc">Deployed Sangfor ETP across all government endpoints, ran active monitoring and policy enforcement, and resolved 3 critical security incidents in Q1. Conducted vulnerability assessments and pen testing with reports accepted by government authorities.</div>
+      <span class="project-result">3 Threats Resolved in Q1</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">2024 | VMware + Sangfor HCI</div>
+      <div class="project-title">Virtualization Platform Deployment</div>
+      <div class="project-desc">Deployed VMware ESXi and Sangfor HCI hyperconverged infrastructure, consolidating physical servers and reducing hardware by an estimated 40% while improving resource use and reliability.</div>
+      <span class="project-result">~40% Hardware Reduction</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What I Offer</div>
+  <div class="section-title">Services I <span>Provide</span></div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🌐</span>
+      <div class="service-title">Network Setup and Design</div>
+      <div class="service-desc">LAN, WAN, and VLAN setup, Cisco switch configuration, network troubleshooting, and full topology documentation.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔒</span>
+      <div class="service-title">Firewall and Security</div>
+      <div class="service-desc">Fortinet and Sangfor firewall setup, security policy creation, NAT, reverse proxy, and internet access control.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🔐</span>
+      <div class="service-title">VPN Configuration</div>
+      <div class="service-desc">IPsec site-to-site and remote-access VPN setup for secure connectivity between multiple locations.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🛡</span>
+      <div class="service-title">Cybersecurity and Pen Testing</div>
+      <div class="service-desc">Endpoint protection, vulnerability assessment, penetration testing, and formal security report writing.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🖥</span>
+      <div class="service-title">Server and Virtualization</div>
+      <div class="service-desc">VMware ESXi and Sangfor HCI setup, Windows Server, Active Directory, and DHCP configuration.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📊</span>
+      <div class="service-title">Monitoring and Documentation</div>
+      <div class="service-desc">SolarWinds setup, NOC wall design, network diagrams, HLD documentation, and technical reports.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📷</span>
+      <div class="service-title">CCTV and Access Control</div>
+      <div class="service-desc">Hikvision and Dahua CCTV setup, biometric access control with Hikvision, ZKT, Suprema, and Biostar.</div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📡</span>
+      <div class="service-title">Wireless Network Setup</div>
+      <div class="service-desc">TP-Link Omada Controller deployment, enterprise Wi-Fi, SSID and VLAN design, and centralized management.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in Touch</div>
+  <div class="section-title">Contact <span>Me</span></div>
+  <div class="contact-section reveal">
+    <p>
+      I am available for full-time positions, contract work, and freelance projects.
+      If you need a network or cybersecurity engineer who takes full ownership of
+      the job, message me and I will get back to you the same day.
+    </p>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="cc-label">Phone</div>
+        <div class="cc-value">+92 333 4152326</div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-label">Email</div>
+        <div class="cc-value">nomankharal@gmail.com</div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-label">Location</div>
+        <div class="cc-value">Islamabad, Pakistan</div>
+      </div>
+      <div class="contact-card">
+        <div class="cc-label">Availability</div>
+        <div class="cc-value">Immediate</div>
+      </div>
+    </div>
+    <a href="mailto:nomankharal@gmail.com" class="btn btn-primary">Send Me a Message</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Nauman Ali</span> &nbsp;|&nbsp; Network and Cybersecurity Engineer &nbsp;|&nbsp; Islamabad, Pakistan
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
