@@ -328,6 +328,86 @@ section:nth-child(even) { background: var(--navy2); }
   white-space: nowrap;
 }
 
+
+/* ── CERTIFICATIONS ── */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+}
+.cert-card {
+  background: linear-gradient(135deg, rgba(15,34,64,0.98), rgba(19,40,72,0.96));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--glow);
+}
+.cert-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(46,143,255,0.20), transparent 35%);
+  pointer-events: none;
+}
+.cert-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--accent);
+  padding: 5px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.cert-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.cert-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  position: relative;
+}
+.cert-meta strong { color: var(--text); font-weight: 600; }
+.cert-desc {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  position: relative;
+}
+.cert-link {
+  position: relative;
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 8px 14px;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.cert-link:hover { background: rgba(46,143,255,0.1); transform: translateY(-2px); }
+
 /* ── EXPERIENCE ── */
 .timeline { position: relative; padding-left: 28px; }
 .timeline::before {
@@ -592,6 +672,7 @@ footer span { color: var(--accent); }
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#services">Services</a></li>
@@ -603,15 +684,20 @@ footer span { color: var(--accent); }
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-tag">Network and Cybersecurity Engineer</div>
+    <div class="hero-tag">CCNP Security Certified Network and Cybersecurity Engineer</div>
     <h1 class="hero-name">Nauman<br><span class="accent">Ali</span></h1>
     <div class="hero-title">12 Years Building and Securing IT Infrastructure</div>
     <p class="hero-desc">
       I build, secure, and manage enterprise and government IT infrastructure.
-      From data center setup to firewall hardening, IPsec VPN, and endpoint
-      security, I take full ownership of the environment and keep it running.
+      As a Cisco Certified Network Professional Security professional, I work across
+      data center operations, firewall hardening, IPsec VPN, endpoint security,
+      and secure network administration.
     </p>
     <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">CCNP</div>
+        <div class="stat-label">Security Certified</div>
+      </div>
       <div class="stat-item">
         <div class="stat-number">12+</div>
         <div class="stat-label">Years Experience</div>
@@ -645,7 +731,9 @@ footer span { color: var(--accent); }
       <p>
         I am a Network and Cybersecurity Engineer based in Islamabad, Pakistan,
         with over <strong>12 years of hands-on experience</strong> across government,
-        enterprise, telecom, and industrial environments.
+        enterprise, telecom, and industrial environments. I am also <strong>CCNP Security certified</strong>,
+        with validated knowledge of Cisco security core technologies, secure infrastructure,
+        threat defense, and network security operations.
       </p>
       <p>
         My current work involves running a <strong>national government data center</strong>
@@ -700,6 +788,19 @@ footer span { color: var(--accent); }
   <div class="section-label">What I Know</div>
   <div class="section-title">Skills and <span>Expertise</span></div>
   <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-card-title">CCNP Security Core</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Cisco Security Core</span>
+        <span class="skill-tag">SCOR 350-701</span>
+        <span class="skill-tag">Network Security</span>
+        <span class="skill-tag">Secure Access</span>
+        <span class="skill-tag">Threat Defense</span>
+        <span class="skill-tag">VPN Security</span>
+        <span class="skill-tag">Firewall Security</span>
+        <span class="skill-tag">Identity and Access Control</span>
+      </div>
+    </div>
     <div class="skill-card reveal">
       <div class="skill-card-title">Networking and Infrastructure</div>
       <div class="skill-tags">
@@ -792,6 +893,37 @@ footer span { color: var(--accent); }
         <span class="skill-tag">Microwave Transmission</span>
         <span class="skill-tag">Mini Link Craft</span>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Verified Credentials</div>
+  <div class="section-title">Professional <span>Certifications</span></div>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <span class="cert-badge">Cisco Professional Level</span>
+      <div class="cert-title">Cisco Certified Network Professional Security</div>
+      <div class="cert-meta"><strong>Issuer:</strong> Cisco &nbsp;|&nbsp; <strong>Valid Until:</strong> June 2029</div>
+      <p class="cert-desc">
+        Validates professional-level skills in implementing and operating Cisco security core technologies,
+        including secure network infrastructure, cloud security concepts, content security, endpoint protection,
+        secure access, visibility, enforcement, and threat response.
+      </p>
+      <a class="cert-link" href="https://www.credly.com/badges/c7cfb0d6-e63a-4006-944b-ddd6f28d9008/public_url" target="_blank" rel="noopener">Verify Credential</a>
+    </div>
+
+    <div class="cert-card reveal">
+      <span class="cert-badge">Security Core Exam</span>
+      <div class="cert-title">Implementing and Operating Cisco Security Core Technologies</div>
+      <div class="cert-meta"><strong>Exam:</strong> SCOR 350-701 &nbsp;|&nbsp; <strong>Credential ID:</strong> SRCQZGBBKRK60YHJ</div>
+      <p class="cert-desc">
+        Demonstrates knowledge across enterprise security architecture, firewall and VPN concepts,
+        identity and access control, endpoint protection, security monitoring, and Cisco security operations.
+      </p>
+      <a class="cert-link" href="#skills">View Related Skills</a>
     </div>
   </div>
 </section>
@@ -994,7 +1126,7 @@ footer span { color: var(--accent); }
 
 <!-- FOOTER -->
 <footer>
-  <span>Nauman Ali</span> &nbsp;|&nbsp; Network and Cybersecurity Engineer &nbsp;|&nbsp; Islamabad, Pakistan
+  <span>Nauman Ali</span> &nbsp;|&nbsp; CCNP Security Certified Network and Cybersecurity Engineer &nbsp;|&nbsp; Islamabad, Pakistan
 </footer>
 
 <script>
