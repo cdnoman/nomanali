@@ -328,86 +328,6 @@ section:nth-child(even) { background: var(--navy2); }
   white-space: nowrap;
 }
 
-
-/* ── CERTIFICATIONS ── */
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 22px;
-}
-.cert-card {
-  background: linear-gradient(135deg, rgba(15,34,64,0.98), rgba(19,40,72,0.96));
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 28px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--glow);
-}
-.cert-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 85% 20%, rgba(46,143,255,0.20), transparent 35%);
-  pointer-events: none;
-}
-.cert-badge {
-  display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--navy);
-  background: var(--accent);
-  padding: 5px 12px;
-  border-radius: 2px;
-  margin-bottom: 16px;
-  position: relative;
-}
-.cert-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
-  position: relative;
-}
-.cert-meta {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-bottom: 16px;
-  position: relative;
-}
-.cert-meta strong { color: var(--text); font-weight: 600; }
-.cert-desc {
-  font-size: 0.9rem;
-  color: var(--text);
-  font-weight: 300;
-  line-height: 1.65;
-  margin-bottom: 20px;
-  position: relative;
-}
-.cert-link {
-  position: relative;
-  display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: var(--accent);
-  text-decoration: none;
-  border: 1px solid var(--accent);
-  padding: 8px 14px;
-  border-radius: 2px;
-  transition: all 0.2s;
-}
-.cert-link:hover { background: rgba(46,143,255,0.1); transform: translateY(-2px); }
-
 /* ── EXPERIENCE ── */
 .timeline { position: relative; padding-left: 28px; }
 .timeline::before {
@@ -581,7 +501,88 @@ section:nth-child(even) { background: var(--navy2); }
   line-height: 1.6;
 }
 
-/* ── CONTACT ── */
+/* ── DESIGN and DOCS CARDS ── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+}
+.portfolio-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.25s;
+  position: relative;
+}
+.portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(46,143,255,0.18); border-color: var(--accent); }
+.portfolio-card-img {
+  width: 100%;
+  height: 180px;
+  background: var(--navy2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.portfolio-card-img .bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(46,143,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(46,143,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.portfolio-card-img .icon { position: relative; z-index: 1; }
+.portfolio-card-body { padding: 20px 22px 22px; }
+.portfolio-card-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.portfolio-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.portfolio-card-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+.portfolio-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.portfolio-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(46,143,255,0.08);
+  border: 1px solid rgba(46,143,255,0.15);
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+.placeholder-note {
+  background: rgba(46,143,255,0.07);
+  border: 1px dashed rgba(46,143,255,0.3);
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 20px;
+  line-height: 1.65;
+}
+.placeholder-note strong { color: var(--accent); }
 .contact-section {
   text-align: center;
   max-width: 640px;
@@ -676,6 +677,8 @@ footer span { color: var(--accent); }
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#docs">Docs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -684,20 +687,15 @@ footer span { color: var(--accent); }
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-tag">CCNP Security Certified Network and Cybersecurity Engineer</div>
+    <div class="hero-tag">Network and Cybersecurity Engineer</div>
     <h1 class="hero-name">Nauman<br><span class="accent">Ali</span></h1>
     <div class="hero-title">12 Years Building and Securing IT Infrastructure</div>
     <p class="hero-desc">
       I build, secure, and manage enterprise and government IT infrastructure.
-      As a Cisco Certified Network Professional Security professional, I work across
-      data center operations, firewall hardening, IPsec VPN, endpoint security,
-      and secure network administration.
+      From data center setup to firewall hardening, IPsec VPN, and endpoint
+      security, I take full ownership of the environment and keep it running.
     </p>
     <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-number">CCNP</div>
-        <div class="stat-label">Security Certified</div>
-      </div>
       <div class="stat-item">
         <div class="stat-number">12+</div>
         <div class="stat-label">Years Experience</div>
@@ -731,9 +729,7 @@ footer span { color: var(--accent); }
       <p>
         I am a Network and Cybersecurity Engineer based in Islamabad, Pakistan,
         with over <strong>12 years of hands-on experience</strong> across government,
-        enterprise, telecom, and industrial environments. I am also <strong>CCNP Security certified</strong>,
-        with validated knowledge of Cisco security core technologies, secure infrastructure,
-        threat defense, and network security operations.
+        enterprise, telecom, and industrial environments.
       </p>
       <p>
         My current work involves running a <strong>national government data center</strong>
@@ -789,19 +785,6 @@ footer span { color: var(--accent); }
   <div class="section-title">Skills and <span>Expertise</span></div>
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <div class="skill-card-title">CCNP Security Core</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Cisco Security Core</span>
-        <span class="skill-tag">SCOR 350-701</span>
-        <span class="skill-tag">Network Security</span>
-        <span class="skill-tag">Secure Access</span>
-        <span class="skill-tag">Threat Defense</span>
-        <span class="skill-tag">VPN Security</span>
-        <span class="skill-tag">Firewall Security</span>
-        <span class="skill-tag">Identity and Access Control</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
       <div class="skill-card-title">Networking and Infrastructure</div>
       <div class="skill-tags">
         <span class="skill-tag">LAN / WAN Design</span>
@@ -842,7 +825,8 @@ footer span { color: var(--accent); }
         <span class="skill-tag">Sangfor ETP</span>
         <span class="skill-tag">Endpoint Threat Protection</span>
         <span class="skill-tag">Vulnerability Assessment</span>
-        <span class="skill-tag">Penetration Testing (CEH)</span>
+        <span class="skill-tag">Penetration Testing</span>
+        <span class="skill-tag">CEH v13 Certified</span>
         <span class="skill-tag">Security Hardening</span>
         <span class="skill-tag">Security Report Writing</span>
       </div>
@@ -897,34 +881,54 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
-
 <!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="section-label">Verified Credentials</div>
-  <div class="section-title">Professional <span>Certifications</span></div>
-  <div class="cert-grid">
-    <div class="cert-card reveal">
-      <span class="cert-badge">Cisco Professional Level</span>
-      <div class="cert-title">Cisco Certified Network Professional Security</div>
-      <div class="cert-meta"><strong>Issuer:</strong> Cisco &nbsp;|&nbsp; <strong>Valid Until:</strong> June 2029</div>
-      <p class="cert-desc">
-        Validates professional-level skills in implementing and operating Cisco security core technologies,
-        including secure network infrastructure, cloud security concepts, content security, endpoint protection,
-        secure access, visibility, enforcement, and threat response.
-      </p>
-      <a class="cert-link" href="https://www.credly.com/badges/c7cfb0d6-e63a-4006-944b-ddd6f28d9008/public_url" target="_blank" rel="noopener">Verify Credential</a>
+<section id="certifications" style="background: var(--navy2);">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Certifications &amp; <span>Qualifications</span></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-year">Cisco &nbsp;|&nbsp; Valid: June 2026 – June 2029</div>
+      <div class="project-title">CCNP Security SCOR (350-701)</div>
+      <div class="project-desc">Cisco Certified Network Professional Security — covering advanced network security, cloud security, content security, endpoint protection, secure network access, visibility, and enforcement at enterprise scale.</div>
+      <span class="project-result">Active Certification</span>
     </div>
 
-    <div class="cert-card reveal">
-      <span class="cert-badge">Security Core Exam</span>
-      <div class="cert-title">Implementing and Operating Cisco Security Core Technologies</div>
-      <div class="cert-meta"><strong>Exam:</strong> SCOR 350-701 &nbsp;|&nbsp; <strong>Credential ID:</strong> SRCQZGBBKRK60YHJ</div>
-      <p class="cert-desc">
-        Demonstrates knowledge across enterprise security architecture, firewall and VPN concepts,
-        identity and access control, endpoint protection, security monitoring, and Cisco security operations.
-      </p>
-      <a class="cert-link" href="#skills">View Related Skills</a>
+    <div class="project-card reveal">
+      <div class="project-year">EC-Council &nbsp;|&nbsp; Valid: July 2026 – July 2029</div>
+      <div class="project-title">CEH v13 – Certified Ethical Hacker</div>
+      <div class="project-desc">EC-Council Certified Ethical Hacker v13 — covering penetration testing, vulnerability assessment, ethical hacking methodology, threat analysis, and security reporting. Applied on live government infrastructure.</div>
+      <span class="project-result">Active Certification</span>
     </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">Sangfor &nbsp;|&nbsp; Theory Passed · Lab Exam Pending</div>
+      <div class="project-title">Sangfor NSF Associate</div>
+      <div class="project-desc">Sangfor Next Generation Firewall Associate certification covering firewall policy management, NAT, security zones, IPsec VPN, reverse proxy, and internet access control — hands-on experience applied at Pakistan Bureau of Statistics.</div>
+      <span class="project-result">Theory Cleared</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">Sangfor &nbsp;|&nbsp; Theory Passed · Lab Exam Pending</div>
+      <div class="project-title">Sangfor IAG Associate</div>
+      <div class="project-desc">Sangfor Internet Access Gateway Associate certification covering internet behavior management, application control, bandwidth management, user authentication, and web filtering — actively managed in live enterprise environment.</div>
+      <span class="project-result">Theory Cleared</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">Sangfor &nbsp;|&nbsp; Theory Passed · Lab Exam Pending</div>
+      <div class="project-title">Sangfor EDR Associate</div>
+      <div class="project-desc">Sangfor Endpoint Detection and Response Associate certification covering endpoint threat detection, malware analysis, incident response, behavioral monitoring, and policy enforcement across enterprise endpoints.</div>
+      <span class="project-result">Theory Cleared</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-year">Sangfor &nbsp;|&nbsp; Hands-On Production Experience</div>
+      <div class="project-title">Sangfor HCI – Hyperconverged Infrastructure</div>
+      <div class="project-desc">Practical experience deploying and managing Sangfor HCI in a live government data center — covering VM provisioning, resource allocation, storage management, performance monitoring, and operational support alongside VMware ESXi.</div>
+      <span class="project-result">Production Experience</span>
+    </div>
+
   </div>
 </section>
 
@@ -1092,6 +1096,124 @@ footer span { color: var(--accent); }
   </div>
 </section>
 
+<!-- DESIGN WORK -->
+<section id="design">
+  <div class="section-label">UI and UX Design</div>
+  <div class="section-title">Design <span>Work</span></div>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-img">
+        <div class="bg-pattern"></div>
+        <span class="icon">🌐</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Website Design and Prototype</div>
+        <div class="portfolio-card-title">NGO Website – Full UI/UX Prototype</div>
+        <div class="portfolio-card-desc">Designed a complete website prototype for a non-profit organization. Covered full user interface design, layout planning, navigation structure, and responsive design across desktop and mobile views. Built as a working clickable prototype ready for development handoff.</div>
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">UI Design</span>
+          <span class="portfolio-tag">UX</span>
+          <span class="portfolio-tag">Prototyping</span>
+          <span class="portfolio-tag">Responsive Layout</span>
+          <span class="portfolio-tag">Non-Profit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-img">
+        <div class="bg-pattern"></div>
+        <span class="icon">🎨</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Design Skills</div>
+        <div class="portfolio-card-title">Website Design and Prototyping Services</div>
+        <div class="portfolio-card-desc">Available for website UI/UX design, wireframing, and prototype creation for businesses, organizations, and personal projects. Strong focus on clean layouts, good user flow, and professional visual design that works on all screen sizes.</div>
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">Wireframing</span>
+          <span class="portfolio-tag">Web UI Design</span>
+          <span class="portfolio-tag">Prototyping</span>
+          <span class="portfolio-tag">Mobile Friendly</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="placeholder-note">
+    <strong>Note:</strong> Screenshots and live preview links for design projects can be shared on request. Contact me directly to see the full NGO website prototype walkthrough.
+  </div>
+</section>
+
+<!-- TECHNICAL DOCUMENTATION -->
+<section id="docs" style="background: var(--navy2);">
+  <div class="section-label">Technical Documentation</div>
+  <div class="section-title">HLD and LLD <span>Docs</span></div>
+  <div class="portfolio-grid">
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-img">
+        <div class="bg-pattern"></div>
+        <span class="icon">🏗</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Data Center | Government Project</div>
+        <div class="portfolio-card-title">Data Center High Level Design (HLD)</div>
+        <div class="portfolio-card-desc">Produced complete High Level Design documentation for a national government data center covering network topology, security architecture, compute and storage layout, virtualization design, monitoring setup, and access control systems. Formally accepted by government authorities.</div>
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">HLD</span>
+          <span class="portfolio-tag">Network Topology</span>
+          <span class="portfolio-tag">Security Architecture</span>
+          <span class="portfolio-tag">Government</span>
+          <span class="portfolio-tag">Visio / Draw.io</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-img">
+        <div class="bg-pattern"></div>
+        <span class="icon">📐</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Data Center | Detailed Design</div>
+        <div class="portfolio-card-title">Low Level Design (LLD) and Network Diagrams</div>
+        <div class="portfolio-card-desc">Created detailed Low Level Design documentation and full network diagrams covering IP addressing, VLAN mapping, firewall rules, VPN architecture, server rack layouts, disaster recovery topology, and legacy infrastructure mapping for a live enterprise government environment.</div>
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">LLD</span>
+          <span class="portfolio-tag">Network Diagrams</span>
+          <span class="portfolio-tag">VLAN Mapping</span>
+          <span class="portfolio-tag">IP Addressing</span>
+          <span class="portfolio-tag">Disaster Recovery</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card reveal">
+      <div class="portfolio-card-img">
+        <div class="bg-pattern"></div>
+        <span class="icon">🛡</span>
+      </div>
+      <div class="portfolio-card-body">
+        <div class="portfolio-card-tag">Cybersecurity | Government</div>
+        <div class="portfolio-card-title">Security Assessment Reports</div>
+        <div class="portfolio-card-desc">Wrote formal security assessment and vulnerability reports for a national government data center. Reports covered penetration testing findings, risk ratings, recommendations, and remediation plans. Submitted to and accepted by senior government officials.</div>
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">Security Report</span>
+          <span class="portfolio-tag">Pen Testing</span>
+          <span class="portfolio-tag">Risk Assessment</span>
+          <span class="portfolio-tag">CEH Aligned</span>
+          <span class="portfolio-tag">Government</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="placeholder-note">
+    <strong>Note:</strong> All documentation samples are available with sensitive information removed. Contact me directly to request redacted samples for review.
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Get in Touch</div>
@@ -1126,7 +1248,7 @@ footer span { color: var(--accent); }
 
 <!-- FOOTER -->
 <footer>
-  <span>Nauman Ali</span> &nbsp;|&nbsp; CCNP Security Certified Network and Cybersecurity Engineer &nbsp;|&nbsp; Islamabad, Pakistan
+  <span>Nauman Ali</span> &nbsp;|&nbsp; Network and Cybersecurity Engineer &nbsp;|&nbsp; Islamabad, Pakistan
 </footer>
 
 <script>
