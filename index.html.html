@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nauman Ali | Network & Cybersecurity Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #030712;
+      --bg-secondary: #081120;
+      --card-bg: rgba(13, 25, 48, 0.65);
+      --card-border: rgba(56, 189, 248, 0.15);
+      --card-border-hover: rgba(56, 189, 248, 0.45);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #2563eb;
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Fixed Attack Animation Canvas */
+    #cyber-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(3, 7, 18, 0.75);
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand span {
+      color: var(--accent-cyan);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .soc-status-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 0.35rem 0.8rem;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-green);
+    }
+
+    .status-pulse {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    /* Container */
+    .container {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      padding-top: 5rem;
+      gap: 2rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title {
+      font-size: 3.4rem;
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      backdrop-filter: blur(10px);
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .metric-item {
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .metric-item:last-child {
+      border-right: none;
+    }
+
+    .metric-val {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+    }
+
+    .metric-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #030712;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--card-border);
+      background: rgba(13, 25, 48, 0.5);
+      color: var(--text-main);
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    /* Hero Avatar Wrapper */
+    .hero-image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .radar-aura {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      border: 1px dashed rgba(56, 189, 248, 0.25);
+      animation: rotateRadar 24s linear infinite;
+      pointer-events: none;
+    }
+
+    .radar-aura::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(56, 189, 248, 0.15);
+    }
+
+    @keyframes rotateRadar {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-avatar {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 35px rgba(3, 105, 161, 0.35));
+      z-index: 2;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title span {
+      color: var(--accent-cyan);
+    }
+
+    /* Grid Layouts */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.1);
+    }
+
+    .project-year {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .project-result {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .status-active {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-green);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .status-theory {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    /* Skills Pill Box */
+    .skills-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .skills-box-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent-cyan);
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skills-tags span {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background: #02050e;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 7rem;
+        text-align: center;
+      }
+      .hero-title { font-size: 2.5rem; }
+      .hero-desc { margin: 0 auto 2rem; }
+      .hero-metrics { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .metric-item { border-right: none; }
+      .hero-actions { justify-content: center; }
+      header { padding: 1rem 1.5rem; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Canvas Background for Live Packet Interception -->
+  <canvas id="cyber-canvas"></canvas>
+
+  <header>
+    <div class="brand">Nauman <span>Ali</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="soc-status-badge">
+      <span class="status-pulse"></span>
+      <span>SOC DEFENSE ACTIVE: <span id="neutralized-counter" style="color:#38bdf8;">0</span> DROPPED</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-tagline">Network &amp; Cybersecurity Operations</div>
+        <h1 class="hero-title">Building Secure, <span>Resilient Infrastructure.</span></h1>
+        <p class="hero-desc">
+          Managing national government data centers, multi-site core routing/switching, next-gen perimeter firewalls, and coordinated endpoint threat response.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric-item">
+            <div class="metric-val">12+</div>
+            <div class="metric-lbl">Years Exp</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">100+</div>
+            <div class="metric-lbl">Sites Deployed</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">99.9%</div>
+            <div class="metric-lbl">Uptime</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-val">CEH v13</div>
+            <div class="metric-lbl">Certified</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#certifications" class="btn-primary">View Credentials</a>
+          <a href="#experience" class="btn-outline">Work History</a>
+        </div>
+      </div>
+
+      <div class="hero-image-container">
+        <div class="radar-aura"></div>
+        <!-- Aapki PNG picture yahan link hai -->
+        <img src="profile.png" alt="Nauman Ali - Network and Cybersecurity Engineer" class="hero-avatar">
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-eyebrow">Technical Mastery</div>
+      <h2 class="section-title">Skills &amp; <span>Expertise</span></h2>
+      <div class="cards-grid">
+        <div class="skills-box">
+          <div class="skills-box-title">Perimeter &amp; Network Security</div>
+          <div class="skills-tags">
+            <span>Fortinet FortiGate</span>
+            <span>FortiManager (Central Ops)</span>
+            <span>FortiAnalyzer</span>
+            <span>Sangfor NGAF / NSF</span>
+            <span>Sangfor IAG (Access Gateway)</span>
+            <span>IPsec Site-to-Site VPN</span>
+            <span>Reverse Proxy &amp; NAT</span>
+          </div>
+        </div>
+
+        <div class="skills-box">
+          <div class="skills-box-title">Core Routing &amp; Switching</div>
+          <div class="skills-tags">
+            <span>Dell OS10 SmartFabric</span>
+            <span>Cisco Catalyst 2960/3750/3850</span>
+            <span>Lenovo Core Switching</span>
+            <span>VLAN &amp; Subnet Isolation</span>
+            <span>LACP / VLT Redundancy</span>
+            <span>High Availability (HA)</span>
+          </div>
+        </div>
+
+        <div class="skills-box">
+          <div class="skills-box-title">Cybersecurity &amp; Assessment</div>
+          <div class="skills-tags">
+            <span>CEH v13 Methodology</span>
+            <span>Vulnerability Assessment</span>
+            <span>Penetration Testing</span>
+            <span>Sangfor Endpoint Secure (EDR)</span>
+            <span>Sangfor Cyber Command (NDR)</span>
+            <span>Incident Response</span>
+          </div>
+        </div>
+
+        <div class="skills-box">
+          <div class="skills-box-title">Data Center &amp; Virtualization</div>
+          <div class="skills-tags">
+            <span>VMware ESXi</span>
+            <span>Sangfor HCI</span>
+            <span>Dell PowerEdge Servers</span>
+            <span>SolarWinds NPM &amp; NOC Wall</span>
+            <span>HLD / LLD Documentation</span>
+            <span>Windows Server &amp; AD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+      <div class="section-eyebrow">Validated Credentials</div>
+      <h2 class="section-title">Certifications &amp; <span>Qualifications</span></h2>
+      <div class="cards-grid">
+        <!-- CEH v13 -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">EC-Council &nbsp;|&nbsp; Active Certification</div>
+            <div class="project-title">CEH v13 – Certified Ethical Hacker</div>
+            <div class="project-desc">EC-Council Certified Ethical Hacker v13 covering hands-on penetration testing, ethical hacking methodology, perimeter validation, network vulnerability analysis, and formal remediation reporting.</div>
+          </div>
+          <span class="project-result status-active">Active Certification</span>
+        </div>
+
+        <!-- Sangfor NSF -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">Sangfor &nbsp;|&nbsp; Active Certification</div>
+            <div class="project-title">Sangfor SCTA - Network Secure (NSF)</div>
+            <div class="project-desc">Sangfor Next-Generation Firewall Associate certification covering security policy administration, NAT, security zoning, IPsec VPN, reverse proxy, and enterprise internet access security.</div>
+          </div>
+          <span class="project-result status-active">Active Certification</span>
+        </div>
+
+        <!-- Sangfor IAG -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">Sangfor &nbsp;|&nbsp; Active Certification</div>
+            <div class="project-title">Sangfor SCTA - Internet Access Gateway (IAG)</div>
+            <div class="project-desc">Sangfor Internet Access Gateway Associate certification covering enterprise internet behavior management, advanced bandwidth quotas, user authentication, SSL decryption, and URL filtering.</div>
+          </div>
+          <span class="project-result status-active">Active Certification</span>
+        </div>
+
+        <!-- Sangfor EDR -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">Sangfor &nbsp;|&nbsp; Active Certification</div>
+            <div class="project-title">Sangfor SCTA - Endpoint Secure (EDR)</div>
+            <div class="project-desc">Sangfor Endpoint Detection and Response Associate certification covering endpoint threat detection, malware analysis, incident response, behavioral monitoring, and policy enforcement across enterprise hosts.</div>
+          </div>
+          <span class="project-result status-active">Active Certification</span>
+        </div>
+
+        <!-- Sangfor Cyber Command -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">Sangfor &nbsp;|&nbsp; SCTA</div>
+            <div class="project-title">Sangfor SCTA - Cyber Command (NDR)</div>
+            <div class="project-desc">Sangfor Cyber Command (NDR) certification covering network traffic analysis, threat correlation, AI-driven anomaly detection, attack chain reconstruction, and automated security orchestration.</div>
+          </div>
+          <span class="project-result status-theory">Theory Cleared</span>
+        </div>
+
+        <!-- FortiManager & DC Infra (Production Experience) -->
+        <div class="project-card">
+          <div>
+            <div class="project-year">Enterprise Stack &nbsp;|&nbsp; Production Operations</div>
+            <div class="project-title">Fortinet FortiManager &amp; Fabric Administration</div>
+            <div class="project-desc">Hands-on enterprise operational experience managing FortiManager centralized policy packages, ADOMs, automated provisioning, and Dell SmartFabric OS10 top-of-rack switching architecture.</div>
+          </div>
+          <span class="project-result">Production Experience</span>
